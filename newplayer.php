@@ -2,7 +2,7 @@
 if (!isset($_POST['send'])){
 ?>
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-    New Player Entry
+    New Player Entry (20 character maximum)
     <p>Name: <input type="text" name="pname">
         <input type="submit" name="send" value="Submit">
     </form>
@@ -15,6 +15,9 @@ else{
     $sql = "USE wood_pingpong";
     $result = mysqli_query($link, $sql);
     $sql = "INSERT INTO player (name) VALUES('$pname')";
+    $result = mysqli_query($link, $sql);
+    $sql = "CREATE TABLE '$pname'(game_number int(4) NOT NULL AUTO INCREMENT UNSIGNED PRIMARY KEY,"
+            . " time_played DATETIME, won_against VARCHAR(20) NOT NULL, lost_to VARCHAR(20) NOT NULL";
     $result = mysqli_query($link, $sql);
     if($result){
         echo "New player registered successfully!<br>";
