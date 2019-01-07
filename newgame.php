@@ -3,7 +3,8 @@ if (!isset($_POST['send'])){
 ?>
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <h1>New Game</h1>
-    <select name="winner">    
+    <select name="winner">
+    <option value=""> </option><br>
         <?php
             $link = mysqli_connect("localhost", "root");
             if(!$link){
@@ -23,6 +24,7 @@ if (!isset($_POST['send'])){
     </select>
         beat
     <select name="loser">
+        <option value=""> </option><br>
             <?php
             $link = mysqli_connect("localhost", "root");
             if(!$link){
