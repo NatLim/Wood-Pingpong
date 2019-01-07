@@ -9,7 +9,7 @@
                 $sql = "USE wood_pingpong";
                 $result = mysqli_query($link, $sql);
                                 
-                $sql = "SELECT name, rating, wins, loses FROM player";
+                $sql = "SELECT name, rating, wins, loses FROM player ORDER BY rating DESC";
                 $result = mysqli_query($link, $sql);  
                 ?>
                 
