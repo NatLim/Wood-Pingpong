@@ -16,11 +16,15 @@ else{
     $result = mysqli_query($link, $sql);
     $sql = "INSERT INTO player (name) VALUES('$pname')";
     $result = mysqli_query($link, $sql);
-    $sql = "CREATE TABLE '$pname'(game_number int(4) NOT NULL AUTO INCREMENT UNSIGNED PRIMARY KEY,"
-            . " time_played DATETIME, won_against VARCHAR(20) NOT NULL, lost_to VARCHAR(20) NOT NULL";
-    $result = mysqli_query($link, $sql);
     if($result){
         echo "New player registered successfully!<br>";
+    }else{
+        echo "Unable to register new player<br>";
+    }
+    $sql = "CREATE TABLE $pname (game_number int(4) NOT NULL AUTO_INCREMENT PRIMARY KEY, time_played DATETIME, won_against VARCHAR(20) NOT NULL, lost_to VARCHAR(20) NOT NULL)";
+    $result = mysqli_query($link, $sql);
+    if($result){
+        echo "New player table created successfully!<br>";
         mysqli_close($link);
     }else{
         echo "Unable to register new player<br>";
