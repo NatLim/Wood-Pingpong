@@ -2,9 +2,9 @@
 if (!isset($_POST['send'])){
 ?>
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <h1>New Game</h1>
-        <p>the result of the game was (please don't beat yourself):</p>
-    <select name="winner">
+        <h1>View Match History</h1>
+        <p>Select Player:</p>
+    <select name="pname">
     <option value=""> </option><br>
         <?php
             $link = mysqli_connect("localhost", "root");
@@ -23,38 +23,17 @@ if (!isset($_POST['send'])){
                     <?php
             } }?> 
     </select>
-        beat
-    <select name="loser">
-        <option value=""> </option><br>
-            <?php
-            $link = mysqli_connect("localhost", "root");
-            if(!$link){
-                die('Could not connect: ' . mysqli_error());
-            }
-            $sql = "USE wood_pingpong";
-            $result = mysqli_query($link, $sql);
-                                
-            $sql = "SELECT name FROM player";
-            $result = mysqli_query($link, $sql);  
-                
-            if(mysqli_num_rows($result) > 0){
-                while($row = mysqli_fetch_assoc($result)){
-                    ?><option value="<?php echo $row["name"]; ?>"><?php echo $row["name"]; ?></option><br>
-                    <?php
-            } ?>     
-    </select>
+  
     <input type="submit" name="send" value="Submit">
     </form>
-        <?php
-            }
+    <?php
             mysqli_close($link);
             echo '<br><a href=index.html>Go back to main page</a>';
     ?>
 <?php }
 
 else{
-    $winner = $_POST['winner'];
-    $loser = $_POST['loser'];
+    $pname = $_POST['pname'];
     $link = mysqli_connect("localhost","root");
     if(!$link){
                 die('Could not connect: ' . mysqli_error());
@@ -121,3 +100,4 @@ else{
     echo '<br><a href=index.html>Go back to main page</a>';
 }
 ?>
+

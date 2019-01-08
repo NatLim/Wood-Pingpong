@@ -23,7 +23,7 @@
                 <?php
                 if(mysqli_num_rows($result) > 0){
                     while($row = mysqli_fetch_assoc($result)){
-                        echo "<tr><td>".$row["name"]."</td><td>".$row["rating"]."</td><td>".$row["wins"]."</td><td>".$row["loses"]."</td></tr>"; 
+                        echo "<tr><td>$row[name]</td><td> $row[rating]</td><td>$row[wins]</td><td>$row[loses]</td></tr>"; 
                     }
                 } else{
                     echo "No data";
