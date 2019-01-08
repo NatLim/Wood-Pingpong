@@ -2,7 +2,7 @@
 if (!isset($_POST['send'])){
 ?>
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-    New Player Entry (20 character maximum)
+    New Player Entry (20 character maximum, no spaces)
     <p>Name: <input type="text" name="pname">
         <input type="submit" name="send" value="Submit">
     </form>

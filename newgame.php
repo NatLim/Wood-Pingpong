@@ -3,6 +3,7 @@ if (!isset($_POST['send'])){
 ?>
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <h1>New Game</h1>
+        <p>the result of the game was (please don't beat yourself):</p>
     <select name="winner">
     <option value=""> </option><br>
         <?php
@@ -98,10 +99,24 @@ else{
     $result = mysqli_query($link, $sql);
     if($result){
         echo "Loser's ELO updated successfully!<br>";
-        mysqli_close($link);
     }else{
         echo "Unable to update ELO<br>";
     }
+ 
+    $time = date("Y-m-d H:i:s");
+    $sql = "INSERT into $winner (time_played, won_against) VALUES ('$time', '$loser')";
+    $result = mysqli_query($link, $sql);
+    if(!$result){
+        die('error'.mysqli_error());
+    }
+    $sql = "INSERT into $loser (time_played, lost_to) VALUES ('$time', '$winner')";
+    $result = mysqli_query($link, $sql);
+    if(!$result){
+        die('error'.mysqli_error());
+    }
+    
+    mysqli_close($link);
+    
     echo '<a href="ranking.php">View Ranking</a>';
     echo '<br><a href=index.html>Go back to main page</a>';
 }
