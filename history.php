@@ -51,9 +51,11 @@ else{
             <th>Time</th>
             <th>Won against</th>
             <th>Lost to</th>
+            <th>Post-game rating</th>
+            <th>Rating changes</th>
             </tr>";
         while($row = mysqli_fetch_assoc($result)){
-            echo "<tr><td>$row[game_number]</td><td> $row[time_played]</td><td>$row[won_against]</td><td>$row[lost_to]</td></tr>"; 
+            echo "<tr><td>$row[game_number]</td><td> $row[time_played]</td><td>$row[won_against]</td><td>$row[lost_to]</td><td>$row[rating]</td><td>$row[changes]</td></tr>"; 
         }
         echo "</table>";
     }else{
