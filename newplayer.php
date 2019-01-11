@@ -21,7 +21,7 @@ else{
     }else{
         echo "Unable to register new player<br>";
     }
-    $sql = "CREATE TABLE $pname (game_number int(4) NOT NULL AUTO_INCREMENT PRIMARY KEY, time_played DATETIME, won_against VARCHAR(20) NOT NULL, lost_to VARCHAR(20) NOT NULL)";
+    $sql = "CREATE TABLE $pname (game_number int(4) NOT NULL AUTO_INCREMENT PRIMARY KEY, time_played DATETIME, won_against VARCHAR(20) NOT NULL, lost_to VARCHAR(20) NOT NULL, rating int(4) NOT NULL, changes int(2) NOT NULL)";
     $result = mysqli_query($link, $sql);
     if($result){
         echo "New player table created successfully!<br>";

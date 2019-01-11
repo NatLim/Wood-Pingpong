@@ -104,19 +104,19 @@ else{
     }
  
     $elogain = $newratingW - $ratingW;
-    $eloloss = $newratingL = $ratingL;
+    $eloloss = $newratingL - $ratingL;
     
     echo "$winner"."'s ELO gain is ". $elogain ."<br>";
     echo "$loser"."'s ELO loss is ". $eloloss ."<br>";
     echo "<br>";    
     
     $time = date("Y-m-d H:i:s");
-    $sql = "INSERT into $winner (time_played, won_against) VALUES ('$time', '$loser')";
+    $sql = "INSERT into $winner (time_played, won_against, rating, changes) VALUES ('$time', '$loser', '$newratingW', '$elogain')";
     $result = mysqli_query($link, $sql);
     if(!$result){
         die('error'.mysqli_error());
     }
-    $sql = "INSERT into $loser (time_played, lost_to) VALUES ('$time', '$winner')";
+    $sql = "INSERT into $loser (time_played, lost_to, rating, changes) VALUES ('$time', '$winner', '$newratingL', '$eloloss')";
     $result = mysqli_query($link, $sql);
     if(!$result){
         die('error'.mysqli_error());
