@@ -103,6 +103,13 @@ else{
         echo "Unable to update ELO<br>";
     }
  
+    $elogain = $newratingW - $ratingW;
+    $eloloss = $newratingL = $ratingL;
+    
+    echo "$winner"."'s ELO gain is ". $elogain ."<br>";
+    echo "$loser"."'s ELO loss is ". $eloloss ."<br>";
+    echo "<br>";    
+    
     $time = date("Y-m-d H:i:s");
     $sql = "INSERT into $winner (time_played, won_against) VALUES ('$time', '$loser')";
     $result = mysqli_query($link, $sql);
