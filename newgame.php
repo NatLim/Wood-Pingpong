@@ -81,8 +81,8 @@ else{
     echo "$loser"."'s probability of winning was ". $EB*100 ."%<br>";
     echo "<br>";
     
-    $newratingW = $ratingW['rating'] + (30*(1-$EA));
-    $newratingL = $ratingL['rating'] + (30*(0-$EB));
+    $newratingW = $ratingW['rating'] + (32*(1-$EA));
+    $newratingL = $ratingL['rating'] + (32*(0-$EB));
     
     echo "$winner"."'s NEW rating is ". $newratingW ."<br>";
     echo "$loser"."'s NEW rating is ". $newratingL ."<br>";
