@@ -103,11 +103,10 @@ else{
         echo "Unable to update ELO<br>";
     }
  
-    $elogain = $newratingW - $ratingW;
-    $eloloss = $newratingL - $ratingL;
+    $elogain = $newratingW - $ratingW['rating'];
+    $eloloss = $newratingL - $ratingL['rating'];
     
-    echo "$winner"."'s ELO gain is ". $elogain ."<br>";
-    echo "$loser"."'s ELO loss is ". $eloloss ."<br>";
+    echo "<br>ELO changes is +/- ". $elogain ."<br>";
     echo "<br>";    
     
     $time = date("Y-m-d H:i:s");
