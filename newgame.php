@@ -109,6 +109,7 @@ else{
     echo "<br>ELO changes is +/- ". $elogain ."<br>";
     echo "<br>";    
     
+    date_default_timezone_set("America/Los_Angeles");
     $time = date("Y-m-d H:i:s");
     $sql = "INSERT into $winner (time_played, won_against, rating, changes) VALUES ('$time', '$loser', '$newratingW', '$elogain')";
     $result = mysqli_query($link, $sql);
